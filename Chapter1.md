@@ -121,13 +121,9 @@ Security comes from economics. Controlling consensus requires buying >33% of sta
 
 - **Solana**: "Proof of History" timestamps + PoS = 50,000+ TPS, but needs expensive hardware ([Solana Validator Requirements](https://docs.solana.com/running-validator/validator-reqs)). Nicknamed "the new Wall Street" for vibrant trading culture—dominant in meme coins, DEX volumes, and fast transaction settlement
 - **Avalanche**: Novel consensus combining classical and Nakamoto approaches ([Avalanche Consensus Whitepaper](https://arxiv.org/abs/1906.08936)). Enables custom subnets for enterprise and gaming applications
-- **Algorand**: Pure PoS with sub-5-second finality ([Algorand Technology](https://www.algorand.com/technology)). Focus on institutional partnerships and government use cases
-- **Sui**: Uses Move programming language (designed for asset safety—resources can't be copied or lost) with parallel transaction execution. Targets gaming and consumer apps with sub-second finality
-- **Aptos**: Also Move-based, emphasizing safety and scalability. Competes in high-performance DeFi and enterprise use cases
+- **Algorand**: Pure PoS with sub-5-second finality using verifiable random functions ([Algorand Technology](https://www.algorand.com/technology)). Focus on institutional partnerships and government use cases
 
-**Note on Move**: Programming language originally developed by Meta for blockchain smart contracts, prioritizes resource safety over flexibility. Prevents common vulnerabilities that plague Solidity contracts.
-
-Each L1 makes different tradeoffs.
+Each represents a genuinely different consensus mechanism.
 
 ### The Trilemma: Pick Two
 
