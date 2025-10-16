@@ -28,7 +28,7 @@ When attempting to define blockchain technology, we immediately encounter a term
 
 Here's what blockchain actually is: **A way for strangers to agree on truth without trusting anyone.**
 
-Everything else follows from solving that problem.
+Everything else follows from solving that problem. While coordination without central authority existed before—village commons, merchant guilds, and (hawala networks)—these required small communities and repeated interactions. Blockchain enables this at global scale through cryptographic proofs and internet connectivity: strangers across continents coordinating in real-time without knowing each other.
 
 **Critical caveat**: This is blockchain's *promise*, not always its reality. In practice, trust assumptions creep back in through centralized infrastructure, oracle dependencies, and governance capture. We'll examine these limits throughout.
 
@@ -730,7 +730,7 @@ For investors with conviction in digital asset transformation and the sophistica
 
 The technology is revolutionary. The opportunity is generational. The execution requires expertise.
 
-## The Bigger Picture: Why This Matters
+## Conclusion: A New Primitive (With Caveats)
 
 Blockchains solve an ancient problem: **How do strangers coordinate without trusting institutions?**
 
