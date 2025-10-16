@@ -4,7 +4,7 @@ Now that you understand Layer 1 blockchains, let's map the broader ecosystem. No
 
 **Why categories matter for investors:** Understanding where a token is positioned in the ecosystem and what role it plays is critical for valuation. A Layer 1 token, a DeFi governance token, and a meme coin occupy completely different positions in the landscape and require entirely different analysis frameworks.
 
-**What we'll cover:** This chapter focuses on categories that represent meaningful market segments with real trading volume and investor interest. We examine Layer 2 scaling solutions (the infrastructure enabling Ethereum's growth), DeFi protocols (decentralized and centralized exchanges, lending, stablecoins—where billions are locked), critical infrastructure (Layer 0 interoperability, oracles, bridges), application layer tokens (NFTs, gaming), and speculative categories (meme coins, privacy coins). We skip obscure niches and dead projects. Each category gets: what it is, major players, how to evaluate it, and key metrics. The goal: give you the framework to understand what you're actually buying when you invest in crypto beyond just Bitcoin and Ethereum.
+**What we'll cover:** This chapter focuses on categories that represent meaningful market segments with real trading volume and investor interest. We examine Layer 2 scaling solutions (the infrastructure enabling Ethereum's growth), DeFi protocols (decentralized exchanges, lending, stablecoins—where billions are locked), centralized exchange tokens (BNB, OKB, and others), critical infrastructure (Layer 0 interoperability, oracles, bridges), application layer tokens (NFTs, gaming), and speculative categories (meme coins, privacy coins). We skip obscure niches and dead projects. Each category gets: what it is, major players, how to evaluate it, and key metrics. The goal: give you the framework to understand what you're actually buying when you invest in crypto beyond just Bitcoin and Ethereum.
 
 ## Layer 2 Scaling Solutions
 
@@ -64,34 +64,6 @@ Key risks: Fragmented liquidity, bridge security, unclear tokenomics, fundamenta
 
 **Key metrics:** 24h trading volume, TVL, protocol fees earned, token holder fee share (%), market share vs competitors.
 
-### Centralized Exchange (CEX) Tokens
-
-**What they are:** Tokens issued by centralized crypto exchanges, offering benefits within their ecosystems.
-
-**How they work:** Exchanges issue their own tokens to create loyalty, reduce trading fees, and raise capital. Token holders get fee discounts, staking rewards, launchpad access, and sometimes governance rights.
-
-**Major players:**
-- **BNB (Binance)**: Largest CEX token, ~$80-90B market cap, used for fee discounts, BNB Chain gas, launchpad access
-- **OKB (OKX)**: OKX exchange token, Asian market focus
-- **KCS (KuCoin)**: KuCoin Shares, holders receive trading fee dividends
-- **CRO (Crypto.com)**: Crypto.com token, used for card rewards and fee discounts
-- **GT (Gate.io)**: Gate.io exchange token
-
-**The FTX lesson:**
-- **FTT (FTX)**: Once valued at ~$8B, collapsed to near-zero in November 2022 when FTX exchange failed. Important reminder that exchange health directly impacts token value.
-
-**Investment angle:** CEX tokens offer direct exposure to exchange performance and trading volumes. Growing exchanges with strong user bases can drive significant token appreciation. 
-
-**Key metrics:** Exchange daily volume, user count, market share (vs Binance/Coinbase), token burn rate, fee discount/utility usage, regulatory licenses held.
-
-**Key considerations:**
-- **Exchange dependency**: Token value directly tied to exchange health and reputation
-- **Regulatory environment**: Exchange compliance and licensing affect token stability
-- **Centralization factor**: Unlike DeFi protocols, you're investing in a company's success
-- **Token supply management**: Monitor exchange-controlled tokens and potential market impact
-
-**The opportunity:** Well-established CEX tokens have historically performed strongly during bull markets as trading volumes surge, often outpacing general market gains. The key is selecting exchanges with solid fundamentals, regulatory compliance, and sustainable business models. Due diligence on exchange operations and financial health is essential.
-
 ### Lending & Borrowing Protocols
 
 **What they do:** Deposit crypto as collateral, borrow other crypto. Earn interest on deposits.
@@ -145,6 +117,36 @@ Key risks: Fragmented liquidity, bridge security, unclear tokenomics, fundamenta
 **Investment angle:** Capture percentage of staking rewards from depositors. As more ETH gets staked, LSDs capture more value. 
 
 **Key metrics:** ETH staked (market share %), protocol fee rate, DeFi integrations (where can stETH be used), validator count, smart contract audit history.
+
+---
+
+## Centralized Exchange Tokens
+
+**What they are:** Tokens issued by centralized crypto exchanges, offering benefits within their ecosystems.
+
+**How they work:** Exchanges issue their own tokens to create loyalty, reduce trading fees, and raise capital. Token holders get fee discounts, staking rewards, launchpad access, and sometimes governance rights.
+
+**Major players:**
+- **BNB (Binance)**: Largest CEX token, ~$80-90B market cap, used for fee discounts, BNB Chain gas, launchpad access
+- **OKB (OKX)**: OKX exchange token, Asian market focus
+- **KCS (KuCoin)**: KuCoin Shares, holders receive trading fee dividends
+- **CRO (Crypto.com)**: Crypto.com token, used for card rewards and fee discounts
+- **GT (Gate.io)**: Gate.io exchange token
+
+**The FTX lesson:**
+- **FTT (FTX)**: Once valued at ~$8B, collapsed to near-zero in November 2022 when FTX exchange failed. Important reminder that exchange health directly impacts token value.
+
+**Investment angle:** CEX tokens offer direct exposure to exchange performance and trading volumes. Growing exchanges with strong user bases can drive significant token appreciation. 
+
+**Key metrics:** Exchange daily volume, user count, market share (vs Binance/Coinbase), token burn rate, fee discount/utility usage, regulatory licenses held.
+
+**Key considerations:**
+- **Exchange dependency**: Token value directly tied to exchange health and reputation
+- **Regulatory environment**: Exchange compliance and licensing affect token stability
+- **Centralization factor**: Unlike DeFi protocols, you're investing in a company's success
+- **Token supply management**: Monitor exchange-controlled tokens and potential market impact
+
+**The opportunity:** Well-established CEX tokens have historically performed strongly during bull markets as trading volumes surge, often outpacing general market gains. The key is selecting exchanges with solid fundamentals, regulatory compliance, and sustainable business models. Due diligence on exchange operations and financial health is essential.
 
 ---
 
