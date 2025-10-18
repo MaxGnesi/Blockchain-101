@@ -7,20 +7,30 @@ This chapter follows a single transaction from Alice sending 1 ETH to Bob—from
 ## Transaction Journey Overview
 
 ```mermaid
-graph LR
-    A["📱 Alice's Wallet<br/>Create Tx"] -->|1. Sign| B["✍️ Signed<br/>Transaction"]
-    B -->|2. Broadcast| C["🌐 P2P Network<br/>Propagate"]
-    C -->|3. Queue| D["⏳ Mempool<br/>Fee Market"]
-    D -->|4. Select| E["⛏️ Validator<br/>Create Block"]
-    E -->|5. Consensus| F["✅ Block<br/>Confirmed"]
-    F -->|6. Update| G["💰 State<br/>Alice -1 ETH<br/>Bob +1 ETH"]
-    G -->|7. Receipt| H["📬 Complete"]
+graph TB
+    subgraph Row1[" "]
+        direction LR
+        A["📱 Alice's Wallet<br/>Create Tx"] -->|1. Sign| B["✍️ Signed<br/>Transaction"]
+        B -->|2. Broadcast| C["🌐 P2P Network<br/>Propagate"]
+        C -->|3. Queue| D["⏳ Mempool<br/>Fee Market"]
+    end
+    
+    subgraph Row2[" "]
+        direction LR
+        E["⛏️ Validator<br/>Create Block"] -->|5. Consensus| F["✅ Block<br/>Confirmed"]
+        F -->|6. Update| G["💰 State<br/>Alice -1 ETH<br/>Bob +1 ETH"]
+        G -->|7. Receipt| H["📬 Complete"]
+    end
+    
+    D -->|4. Select| E
     
     style A fill:#e1f5ff,stroke:#0066cc,stroke-width:2px
     style D fill:#fff4e1,stroke:#ff9900,stroke-width:2px
     style E fill:#ffe1e1,stroke:#ff3333,stroke-width:2px
     style F fill:#e1ffe1,stroke:#00cc66,stroke-width:2px
     style H fill:#f0e1ff,stroke:#9933ff,stroke-width:2px
+    style Row1 fill:none,stroke:none
+    style Row2 fill:none,stroke:none
 ```
 
 ---
