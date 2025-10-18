@@ -11,18 +11,18 @@ This chapter follows a single transaction—Alice sending 1 ETH to Bob—from th
 
 ## Transaction Journey Overview
 
-```
-┌─────────┐     ┌────────┐     ┌─────────┐     ┌─────────┐
-│ 1.Create│────▶│ 2.Sign │────▶│3.Broadcast│───▶│4.Mempool│
-│  Wallet │     │  Keys  │     │   P2P   │     │  Queue  │
-└─────────┘     └────────┘     └─────────┘     └─────────┘
-                                                      │
-┌─────────┐     ┌────────┐     ┌─────────┐          ▼
-│8.Receipt│◀────│7.Update│◀────│6.Finality│◀───┌─────────┐
-│Confirmed│     │  State │     │Consensus│     │5.Block  │
-└─────────┘     └────────┘     └─────────┘     │Creation │
-                                                └─────────┘
-```
+**The 8 Steps from Wallet to Blockchain:**
+
+1. **📱 Create** → Transaction formed in wallet
+2. **✍️ Sign** → Cryptographic signature applied  
+3. **🌐 Broadcast** → Sent to P2P network
+4. **⏳ Mempool** → Queued for inclusion
+5. **⛏️ Block Creation** → Miner/validator includes it
+6. **✅ Consensus** → Network agrees on validity
+7. **💰 State Update** → Balances change
+8. **📬 Receipt** → Confirmation received
+
+Each step involves specific technology that determines the network's speed, security, and decentralization.
 
 ---
 
@@ -80,24 +80,21 @@ This is where blockchains diverge significantly in their approaches:
 
 **Classic decentralized approach:**
 
-```
-Alice → Node A → Node C → Node G → ...
-      ↘ Node B → Node D → Node H → ...
-              ↘ Node E → Node I → ...
-                    ↘ Node F → ...
-                    
-Within 1-3 seconds: thousands of nodes have the transaction
-```
+**Network Topology:**
+- Alice connects to 8-50 random peers globally
+- Each peer validates and forwards to their peers  
+- Exponential spread: 8 → 64 → 512 → 4,096 nodes in 4 hops
+- Full network propagation in 1-3 seconds
 
-**Process:**
-1. Alice sends to 8 connected peers
-2. Each validates and forwards to their peers
-3. Exponential spread across the network
+**Live Network Monitoring:**
+- Bitcoin nodes: [Bitnodes.io](https://bitnodes.io/) (~15,000 nodes globally)
+- Ethereum nodes: [Ethernodes.org](https://www.ethernodes.org/) (~8,000 nodes)
+- Real-time propagation: [TxStreet.com](https://txstreet.com/)
 
 **Validation checks performed:**
-- Signature validity
-- Account balance sufficient
-- Nonce correct
+- Signature validity (ECDSA verification)
+- Account balance sufficient 
+- Nonce correct (prevents replay)
 - Gas price acceptable
 
 ✅ **Pros:** Highly decentralized, censorship resistant  
@@ -107,27 +104,37 @@ Within 1-3 seconds: thousands of nodes have the transaction
 
 **Optimized for speed using erasure coding:**
 
-```
-Leader → Breaks data into packets → Tree distribution
-                                  → Validators reconstruct
-                                  
-Result: 200-400ms propagation vs 1-3 seconds
-```
+**How it works:**
+- Leader breaks data into small packets
+- Erasure coding enables reconstruction from partial data
+- Tree distribution instead of random gossip
+- Result: 200-400ms propagation vs 1-3 seconds
+
+**Requirements & Monitoring:**
+- Validator requirements: [Solana Docs](https://docs.solana.com/running-validator/validator-reqs)
+- Network status: [Solana Beach](https://solanabeach.io/validators)
+- Performance metrics: [Solana Status](https://status.solana.com/)
 
 ✅ **Pros:** Ultra-fast block propagation  
-❌ **Cons:** Requires 10 Gbps+ networking, expensive hardware
+❌ **Cons:** Requires 10 Gbps+ networking, expensive hardware ($5-10K setup)
 
 ### Sequencer Model (Layer 2s)
 
 **Centralized ordering, decentralized settlement:**
 
-```
-Alice → Single Sequencer → Instant ordering
-                        ↘ Batch to Ethereum L1
-```
+**How it works:**
+- Single sequencer orders transactions
+- Instant soft confirmations (10-50ms)
+- Batches posted to Ethereum L1 for finality
 
-✅ **Pros:** 10-50ms confirmation, no MEV in mempool  
-❌ **Cons:** Single point of failure/censorship
+**L2 Explorers & Status:**
+- Arbitrum: [Arbiscan](https://arbiscan.io/)
+- Optimism: [Optimistic Etherscan](https://optimistic.etherscan.io/)
+- Base: [Basescan](https://basescan.org/)
+- Sequencer status: Check respective status pages
+
+✅ **Pros:** Instant confirmation, no MEV in mempool  
+❌ **Cons:** Single point of failure (though L1 fallback exists)
 
 **Why this matters:** Network architecture determines speed, decentralization, and censorship resistance—core properties affecting investment value.
 
@@ -158,27 +165,37 @@ Low Priority (5 gwei):    May get stuck for hours
 
 #### Sandwich Attack Example
 
-```
+**How it works:**
 1. You submit: "Buy 100 ETH at market price"
 2. Bot sees your transaction in mempool
 3. Bot front-runs: Buys 100 ETH first (price rises)
 4. Your transaction executes at higher price
 5. Bot back-runs: Sells 100 ETH immediately
 
-Result: You pay extra, bot profits the difference
-```
+**Result:** You pay extra, bot profits the difference
 
 **Scale of the problem:**
-- Ethereum: $500M-1B extracted annually
+- Ethereum: $500M-1B extracted annually ([MEV Explore](https://explore.flashbots.net/))
 - Individual attacks: $100-10,000 per victim
 - Large liquidations: $50K-500K per event
+- Real-time MEV tracking: [EigenPhi](https://eigenphi.io/)
 
-#### MEV Mitigation Strategies
+#### MEV Protection Tools
 
-1. **Private Mempools** (Flashbots Protect)
-2. **MEV-resistant DEXs** (CoW Swap, UniswapX)
-3. **Limit orders** instead of market orders
-4. **Split large trades** into smaller pieces
+**Private Mempools:**
+- [Flashbots Protect RPC](https://docs.flashbots.net/flashbots-protect/overview)
+- [Eden Network](https://docs.edennetwork.io/)
+
+**MEV-Resistant DEXs:**
+- [CoW Swap](https://swap.cow.fi/) - Batches trades off-chain
+- [UniswapX](https://app.uniswap.org/) - Dutch auction model
+- [1inch Fusion](https://1inch.io/fusion/) - Order matching without mempool
+
+**Best Practices:**
+1. Use limit orders instead of market orders
+2. Split large trades into smaller pieces
+3. Trade during low-activity periods
+4. For trades >$100K: Consider OTC desks
 
 **Why this matters:** MEV is an invisible tax on users—understand it to protect your trades.
 
@@ -467,6 +484,45 @@ The journey from wallet to confirmation reveals why Bitcoin is slow but secure, 
 **Technology determines destiny in blockchain.** Marketing fades. Communities migrate. But code—and the trade-offs it embodies—is permanent.
 
 Understanding the transaction journey means understanding what you're actually investing in: not promises or communities or tokens, but technology stacks with specific capabilities and constraints.
+
+---
+
+## Technical Resources & Tools
+
+### **Development & Testing**
+- [Remix IDE](https://remix.ethereum.org/) - Smart contract development
+- [Hardhat](https://hardhat.org/) - Ethereum development environment
+- [Foundry](https://book.getfoundry.sh/) - Blazing fast EVM toolkit
+- [Tenderly](https://tenderly.co/) - Transaction simulator
+
+### **MEV & Transaction Tools**
+- [Flashbots Docs](https://docs.flashbots.net/) - MEV protection
+- [EigenPhi](https://eigenphi.io/) - MEV analysis
+- [Blocknative](https://www.blocknative.com/) - Mempool monitoring
+- [Phalcon](https://phalcon.blocksec.com/) - Transaction debugging
+
+### **Network Monitoring**
+- [Ethernodes](https://www.ethernodes.org/) - Node distribution
+- [Bitnodes](https://bitnodes.io/) - Bitcoin network map
+- [Solana Status](https://status.solana.com/) - Network health
+- [TxStreet](https://txstreet.com/) - Visual mempool
+
+### **Gas Optimization**
+- [GasHawk](https://gashawk.io/) - Automated gas savings
+- [Blocknative Gas](https://www.blocknative.com/gas-platform) - Gas predictions
+- [Ultra Sound Money](https://ultrasound.money/) - ETH burn tracking
+
+### **Security Analysis**
+- [Etherscan Token Tracker](https://etherscan.io/tokens) - Token verification
+- [Honeypot Checker](https://honeypot.is/) - Scam detection
+- [DeFi Pulse](https://www.defipulse.com/) - Protocol rankings
+- [CryptoScamDB](https://cryptoscamdb.org/) - Scam database
+
+### **Essential Reading**
+- [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf) - Satoshi Nakamoto
+- [Ethereum Yellowpaper](https://ethereum.github.io/yellowpaper/paper.pdf) - Technical spec
+- [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook) - Andreas Antonopoulos
+- [Vitalik's Blog](https://vitalik.eth.limo/) - Ethereum founder's thoughts
 
 Invest accordingly.
 
