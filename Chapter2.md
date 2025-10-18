@@ -1,8 +1,28 @@
-# Chapter 2: Following the Money - A Transaction's Journey
+# Chapter 3: Following the Money - A Transaction's Journey
 
 **Understanding blockchain investment requires understanding what actually happens when value moves.** Not the theory. The mechanics.
 
 This chapter follows a single transaction from Alice sending 1 ETH to Bob—from the moment she clicks "send" to the moment it's permanent. Every step reveals a technology component. Every component represents either a strength or a vulnerability you're betting on.
+
+## Transaction Journey Overview
+
+```mermaid
+graph TD
+    A[Alice's Wallet<br/>Create Transaction] -->|1. Sign with Private Key| B[Signed Transaction]
+    B -->|2. Broadcast| C[P2P Network<br/>Gossip/Turbine/Sequencer]
+    C -->|3. Validate & Forward| D[Mempool<br/>Fee Market]
+    D -->|4. Select Transactions| E[Validator/Miner<br/>Create Block]
+    E -->|5. Execute & Consensus| F[New Block<br/>PoW/PoS]
+    F -->|6. Propagate & Verify| G[Network Consensus<br/>Finality]
+    G -->|7. Update State| H[Alice: -1 ETH<br/>Bob: +1 ETH]
+    H -->|8. Confirmation| I[Transaction Receipt<br/>Complete]
+    
+    style A fill:#e1f5ff
+    style D fill:#fff4e1
+    style E fill:#ffe1e1
+    style G fill:#e1ffe1
+    style I fill:#f0e1ff
+```
 
 ---
 
@@ -62,6 +82,34 @@ The signing algorithm creates a unique signature that proves:
 ### Technology: Network Propagation (Varies by Blockchain)
 
 Most blockchains are peer-to-peer—no central servers. But how transactions spread differs significantly:
+
+```mermaid
+graph TB
+    subgraph Gossip["Gossip Protocol (Bitcoin/Ethereum)<br/>Decentralized - 1-3 seconds"]
+        A1[Alice] --> N1[Node 1]
+        A1 --> N2[Node 2]
+        N1 --> N3[Node 3]
+        N1 --> N4[Node 4]
+        N2 --> N5[Node 5]
+        N2 --> N6[Node 6]
+        N3 --> N7[...]
+        N4 --> N7
+        N5 --> N7
+        N6 --> N7
+        N7[Thousands<br/>of Nodes]
+    end
+    
+    subgraph Sequencer["Sequencer Model (L2s)<br/>Centralized - 10-50ms"]
+        A2[Alice] --> SEQ[Single<br/>Sequencer]
+        SEQ --> U1[User 1]
+        SEQ --> U2[User 2]
+        SEQ --> U3[User 3]
+        SEQ --> L1[Batch to<br/>Ethereum L1]
+    end
+    
+    style Gossip fill:#e1f5ff
+    style Sequencer fill:#ffe1e1
+```
 
 #### **Gossip Protocol (Bitcoin, Ethereum, Cardano)**
 
@@ -131,17 +179,6 @@ Instead of gossip, Solana uses **Turbine** - a block propagation protocol inspir
 - Centralized sequencer = single point of failure/censorship
 - Most L2s plan to decentralize sequencers (not yet implemented)
 
-#### **Mempool-less Designs (Flashbots SUAVE, Intent-based systems)**
-
-**Emerging approach:**
-
-Instead of public mempool + gossip, some systems use:
-- **Private order flow** to specialized builders
-- **Intent-based** architecture (express what you want, solver figures out how)
-- **Request-for-quote** systems (like OTC trading)
-
-**Not yet mainstream, but direction of evolution for MEV mitigation.**
-
 ---
 
 ### Why Investors Care About Network Architecture
@@ -167,42 +204,15 @@ Instead of public mempool + gossip, some systems use:
 
 **Investment question:** What happens if key infrastructure fails?
 
-**4. Network Effects & Node Count**
-- More nodes = harder to attack, more decentralized
-- But also = slower propagation (gossip inefficiency)
-- Bitcoin: 15,000+ nodes = extremely censorship resistant
-- New chains: Often <500 nodes initially = easier to attack
-
-**Investment question:** Is the node count growing or shrinking?
-
-**5. Latency Affects UX**
-- Gossip: 1-3 seconds to see transaction propagate (acceptable for most use cases)
-- Turbine: 200-400ms (enables high-frequency trading, gaming)
-- Sequencer: 10-50ms pre-confirmations (instant feel)
-
-**Investment question:** Does the use case require instant confirmations?
-
----
-
 ### Network Architecture Summary
 
 | Blockchain | Propagation Model | Speed | Decentralization | Trade-off |
 |------------|------------------|-------|------------------|-----------|
-| **Bitcoin** | Gossip | 1-3 sec | Very High (15K nodes) | Slow but maximally decentralized |
-| **Ethereum** | Gossip | 1-3 sec | High (8K nodes) | Slower but decentralized |
-| **Solana** | Turbine (erasure coding) | 200-400ms | Moderate (~1,800 validators) | Fast but requires powerful hardware |
-| **Arbitrum/Optimism** | Centralized Sequencer | 10-50ms | Low (1 sequencer) | Instant but centralized risk |
-| **Avalanche** | Gossip + Repeated Voting | ~1 sec | High (~1,800 validators) | Fast consensus through aggressive networking |
-
-**Bottom line:** "Blockchain is decentralized" is oversimplified. Network architecture determines the **degree** of decentralization and the trade-offs made.
-
-When evaluating investments:
-- Check **node count** (more = better decentralization)
-- Check **geographic distribution** (one country = censorship risk)
-- Check **hardware requirements** (higher = fewer can participate = centralization pressure)
-- Check **network model** (gossip vs sequencer vs hybrid)
-
-**No architecture is strictly "better"** - it depends on what you're optimizing for. Payment networks might prefer gossip. Gaming might prefer sequencers. Understanding these trade-offs reveals what each blockchain is actually betting on.
+| **Bitcoin** | Gossip | 1-3 sec | ⭐⭐⭐⭐⭐ (15K nodes) | Slow but maximally decentralized |
+| **Ethereum** | Gossip | 1-3 sec | ⭐⭐⭐⭐ (8K nodes) | Slower but decentralized |
+| **Solana** | Turbine (erasure coding) | 200-400ms | ⭐⭐⭐ (~1,800 validators) | Fast but requires powerful hardware |
+| **Arbitrum/Optimism** | Centralized Sequencer | 10-50ms | ⭐ (1 sequencer) | Instant but centralized risk |
+| **Avalanche** | Gossip + Repeated Voting | ~1 sec | ⭐⭐⭐⭐ (~1,800 validators) | Fast consensus through aggressive networking |
 
 ---
 
@@ -231,9 +241,37 @@ The mempool is not first-come-first-served. It's a **fee market**.
 - Layer 2 solutions emerged specifically to address this (see Chapter 2)
 - Fee revenue accrues to validators/miners = key economic sustainability metric
 
+---
+
 ### Understanding MEV: The Hidden Tax
 
 **MEV (Maximal Extractable Value)** is profit that validators/miners can extract by manipulating transaction ordering. Think of it as an invisible tax on users.
+
+```mermaid
+sequenceDiagram
+    participant Alice
+    participant Mempool
+    participant Bot
+    participant Uniswap
+    participant Block
+    
+    Alice->>Mempool: Submit: Buy 100 ETH @ $2,500
+    Note over Mempool: Transaction visible to all
+    Mempool->>Bot: Bot detects profitable opportunity
+    
+    Bot->>Block: Front-run: Buy 100 ETH FIRST
+    Note over Uniswap: Price increases: $2,500 → $2,520
+    
+    Block->>Uniswap: Alice's transaction executes
+    Note over Alice: Pays $2,520 per ETH<br/>(Extra $2,000 cost)
+    
+    Bot->>Block: Back-run: Sell 100 ETH immediately
+    Note over Bot: Profit: $2,000<br/>(Alice's loss)
+    
+    rect rgb(255, 230, 230)
+        Note over Alice,Bot: Sandwich Attack Complete
+    end
+```
 
 **How it works - Concrete Example:**
 
@@ -263,11 +301,11 @@ Anyone who can see pending transactions (public mempool) AND control ordering (v
 
 | Blockchain | MEV Risk | Why |
 |------------|----------|-----|
-| **Ethereum** | Very High | Public mempool + DeFi activity = massive MEV |
-| **Bitcoin** | Low | Simple transfers, no DeFi, no complex arbitrage |
-| **Solana** | Moderate | Fast blocks limit front-running window, but exists |
-| **Arbitrum/Optimism (L2s)** | High | Inherit Ethereum's MEV + sequencer centralization |
-| **Flashbots/Private Mempools** | Reduced | Users can bypass public mempool |
+| **Ethereum** | ⚠️ Very High | Public mempool + DeFi activity = massive MEV |
+| **Bitcoin** | ✅ Low | Simple transfers, no DeFi, no complex arbitrage |
+| **Solana** | ⚠️ Moderate | Fast blocks limit front-running window, but exists |
+| **Arbitrum/Optimism (L2s)** | ⚠️ High | Inherit Ethereum's MEV + sequencer centralization |
+| **Flashbots/Private Mempools** | ✅ Reduced | Users can bypass public mempool |
 
 **Mitigation Tools for Investors:**
 
@@ -321,6 +359,30 @@ Some argue MEV makes Ethereum more sustainable long-term (validators earn more =
 ### Technology: Consensus Mechanisms
 
 This is where blockchains differ significantly:
+
+```mermaid
+graph TB
+    subgraph PoW["Proof of Work (Bitcoin)"]
+        M1[Miners Compete] --> M2[Try Trillions<br/>of Nonces]
+        M2 --> M3{Hash < Target?}
+        M3 -->|No| M2
+        M3 -->|Yes| M4[Broadcast Block]
+        M4 --> M5[Cost: $30k<br/>electricity/block]
+        M5 --> M6[Reward: 3.125 BTC<br/>+ fees]
+    end
+    
+    subgraph PoS["Proof of Stake (Ethereum)"]
+        V1[Validators<br/>Stake 32 ETH] --> V2[Random<br/>Selection]
+        V2 --> V3[Propose Block]
+        V3 --> V4[Other Validators<br/>Attest]
+        V4 --> V5{Honest?}
+        V5 -->|Yes| V6[Earn ~3.5%<br/>APR]
+        V5 -->|No| V7[Slashing:<br/>Lose Stake]
+    end
+    
+    style PoW fill:#ffe1e1
+    style PoS fill:#e1ffe1
+```
 
 #### **Proof of Work (Bitcoin, Litecoin)**
 
@@ -416,6 +478,27 @@ Each block contains a Merkle root—a cryptographic hash of all transactions. Th
 ### Technology: State Management & Accounting Models
 
 Blockchains must track who owns what. Two fundamentally different approaches exist:
+
+```mermaid
+graph LR
+    subgraph UTXO["UTXO Model (Bitcoin)<br/>Like Physical Cash"]
+        U1[UTXO<br/>0.5 BTC] --> TX{Spend<br/>Transaction}
+        U2[UTXO<br/>0.3 BTC] --> TX
+        U3[UTXO<br/>1.2 BTC] --> TX
+        TX -->|Destroyed| X[❌]
+        TX -->|Create| N1[New UTXO<br/>0.8 BTC<br/>to Bob]
+        TX -->|Create| N2[New UTXO<br/>0.39 BTC<br/>Change to Alice]
+        TX -->|Fee| N3[0.01 BTC<br/>to Miner]
+    end
+    
+    subgraph Account["Account Model (Ethereum)<br/>Like Bank Account"]
+        A1["Alice's Account<br/>Balance: 15.7 ETH"] -->|Send 3 ETH| A2["Alice's Account<br/>Balance: 12.7 ETH"]
+        B1["Bob's Account<br/>Balance: 5 ETH"] -->|Receive 3 ETH| B2["Bob's Account<br/>Balance: 8 ETH"]
+    end
+    
+    style UTXO fill:#fff4e1
+    style Account fill:#e1f5ff
+```
 
 ---
 
@@ -599,29 +682,17 @@ Result: Three account balances updated
 
 ---
 
-### **Hybrid Approaches**
-
-Some blockchains try to get best of both:
-
-- **Cardano (eUTXO):** Extended UTXO with smart contract capabilities
-- **Fuel:** UTXO model but with account-like abstractions
-- **Nervos:** Cell model (similar to UTXO but more flexible)
-
-**These haven't achieved Ethereum's adoption**, suggesting Account model won for programmability use cases, while pure UTXO won for simple, secure value transfer (Bitcoin).
-
----
-
 ### **Summary Table**
 
 | Feature | UTXO (Bitcoin) | Account (Ethereum) |
 |---------|----------------|-------------------|
 | **Mental model** | Physical cash | Bank account |
 | **Transaction** | Spend outputs, create new ones | Update balances |
-| **Privacy** | Better (new address per tx) | Worse (linked to one address) |
-| **Smart contracts** | Very limited | Full capability |
-| **State size** | Smaller (~500GB Bitcoin) | Larger (~1TB Ethereum) |
-| **Developer ease** | Harder | Easier |
-| **Security model** | Simpler, more auditable | More complex |
+| **Privacy** | ✅ Better (new address per tx) | ❌ Worse (linked to one address) |
+| **Smart contracts** | ❌ Very limited | ✅ Full capability |
+| **State size** | ✅ Smaller (~500GB Bitcoin) | ❌ Larger (~1TB Ethereum) |
+| **Developer ease** | ❌ Harder | ✅ Easier |
+| **Security model** | ✅ Simpler, more auditable | ⚠️ More complex |
 | **Best for** | Digital gold, payments | DeFi, applications |
 
 **Bottom line:** The accounting model determines what's possible on the blockchain. UTXO optimizes for security and simplicity. Account model optimizes for programmability and user experience.
@@ -640,6 +711,41 @@ When evaluating investments, ask: **What is this blockchain trying to do?**
 ### What Changes When Calling a Smart Contract
 
 Instead of Alice sending 1 ETH to Bob's address, imagine Alice swaps 1 ETH for tokens on Uniswap.
+
+```mermaid
+sequenceDiagram
+    participant Alice
+    participant EVM
+    participant Uniswap Router
+    participant Pool
+    participant Token
+    
+    Alice->>EVM: Call swap(1 ETH)<br/>Gas Limit: 200,000
+    
+    EVM->>Uniswap Router: Execute swapExactETHForTokens
+    Note over EVM: Gas used: 2,600
+    
+    Uniswap Router->>Pool: Read reserves
+    Note over Pool: SLOAD: 2,100 gas
+    Pool-->>Uniswap Router: Reserve data
+    
+    Uniswap Router->>Uniswap Router: Calculate exchange rate
+    Note over Uniswap Router: Arithmetic: ~100 gas
+    
+    Uniswap Router->>Pool: Update reserves
+    Note over Pool: SSTORE: 20,000 gas
+    
+    Uniswap Router->>Token: Transfer USDC to Alice
+    Note over Token: External call: ~50,000 gas
+    
+    Token-->>Alice: 2,847 USDC received
+    
+    EVM-->>Alice: ✅ Success<br/>Total gas: 150,000<br/>Cost: ~$11.50
+    
+    rect rgb(230, 255, 230)
+        Note over Alice,Token: All state changes applied atomically
+    end
+```
 
 **The transaction now includes:**
 - **To**: Uniswap contract address (not Bob's address)
@@ -713,7 +819,7 @@ The Uniswap swap actually triggers multiple contracts:
 
 Unlike Bitcoin's simple "value transferred," smart contracts emit structured events:
 
-```
+```solidity
 Transfer(from: 0x742d..., to: 0x8f3a..., value: 2847000000)
 Swap(sender: 0x742d..., amount0In: 1000000000000000000, amount1Out: 2847000000, ...)
 ```
@@ -806,6 +912,50 @@ Logs are stored in transaction receipts but **not in blockchain state** (cheaper
 
 ## The Technology Stack: What You're Actually Betting On
 
+```mermaid
+graph TB
+    subgraph Layer5["⚙️ Layer 5: Transaction Execution"]
+        E1[Virtual Machines<br/>EVM, Solana Runtime]
+        E2[Gas Metering<br/>Fee Markets]
+        E3[Smart Contracts<br/>DeFi, NFTs]
+    end
+    
+    subgraph Layer4["📊 Layer 4: State Management"]
+        S1[Account Model<br/>vs UTXO]
+        S2[Merkle Trees<br/>State Proofs]
+        S3[State Database<br/>Storage]
+    end
+    
+    subgraph Layer3["🤝 Layer 3: Consensus"]
+        C1[PoW vs PoS<br/>Security Model]
+        C2[Fork Choice<br/>Longest Chain]
+        C3[Finality Rules<br/>2-step, Fast]
+    end
+    
+    subgraph Layer2["🌐 Layer 2: P2P Networking"]
+        N1[Gossip / Turbine<br/>Propagation]
+        N2[Block Broadcast<br/>Optimization]
+        N3[Mempool<br/>Fee Market]
+    end
+    
+    subgraph Layer1["🔒 Layer 1: Cryptographic Primitives"]
+        P1[Hash Functions<br/>SHA-256, Keccak]
+        P2[Digital Signatures<br/>ECDSA, Ed25519]
+        P3[Merkle Proofs<br/>Verification]
+    end
+    
+    Layer5 --> Layer4
+    Layer4 --> Layer3
+    Layer3 --> Layer2
+    Layer2 --> Layer1
+    
+    style Layer1 fill:#e1f5ff
+    style Layer2 fill:#f0e1ff
+    style Layer3 fill:#ffe1e1
+    style Layer4 fill:#fff4e1
+    style Layer5 fill:#e1ffe1
+```
+
 When you invest in a blockchain, you're betting on this entire stack:
 
 ### **Layer 1: Cryptographic Primitives**
@@ -853,9 +1003,11 @@ No blockchain is "100% secure." Security comes from:
 - **Decentralization** (node count, geographic distribution)
 - **Time** (longer history = more battle-tested)
 
-Bitcoin: 15 years, zero successful attacks. Most secure.
-Ethereum: 10 years, The DAO forced a contentious fork.
-New chains: Unproven. Multiple 51% attacks on smaller PoW chains annually.
+| Blockchain | Age | Security Track Record |
+|------------|-----|----------------------|
+| Bitcoin | 15 years | Zero successful attacks |
+| Ethereum | 10 years | The DAO forced contentious fork |
+| New chains | <3 years | Multiple 51% attacks on smaller PoW chains annually |
 
 ### **2. Speed vs Decentralization**
 
@@ -871,13 +1023,15 @@ Result: ~1,800 validators, many in data centers. Compare to Bitcoin's 15,000 div
 - Low hardware requirements
 - Strong decentralization
 
-Pick two.
+**Pick two.**
 
 ### **3. Sustainability Matters**
 
 Transaction fees must eventually support the network when block rewards decline.
 
 **Bitcoin's 2140 problem:** When the last BTC is mined, security depends entirely on transaction fees. Will $10M+ per day in fees be sustainable?
+
+**Real timeline:** By 2032, Bitcoin's block reward drops to 0.78 BTC. Fee market needs to mature in ~7 years, not 115.
 
 **Ethereum's fee burn:** EIP-1559 burns base fees. During high usage, ETH becomes deflationary. Low usage = validator rewards may be insufficient.
 
@@ -914,12 +1068,13 @@ The transaction we followed—Alice sending 1 ETH to Bob—touched every major c
 - **A competitive moat** that's hard to replicate
 
 When evaluating blockchain investments, ask:
-- How much would it cost to attack this network?
-- What are the hardware requirements to run a node?
-- How mature is the codebase? (Years running, bugs found/fixed)
-- What's the developer ecosystem like?
-- How are upgrades governed?
-- Is the fee market sustainable long-term?
+
+✅ **Security**: How much would it cost to attack this network?
+✅ **Decentralization**: What are the hardware requirements to run a node?
+✅ **Maturity**: How mature is the codebase? (Years running, bugs found/fixed)
+✅ **Ecosystem**: What's the developer ecosystem like?
+✅ **Governance**: How are upgrades governed?
+✅ **Sustainability**: Is the fee market sustainable long-term?
 
 **The technology is the product.** In blockchain, there's no brand, no sales team, no marketing budget (usually). Just code, cryptography, and economic incentives.
 
@@ -928,3 +1083,24 @@ Bet on tech that solves real constraints. Not on roadmaps and promises.
 ---
 
 **Next:** Chapter 4 will examine the regulatory landscape and compliance considerations affecting institutional adoption.
+
+---
+
+## Quick Reference: Key Metrics by Blockchain
+
+| Metric | Bitcoin | Ethereum | Solana |
+|--------|---------|----------|--------|
+| **Consensus** | PoW | PoS | PoS |
+| **Block Time** | 10 min | 12 sec | 400ms |
+| **TPS** | ~7 | ~15-30 | ~3,000 |
+| **Finality** | ~60 min (6 blocks) | ~13 min (2 epochs) | ~400ms |
+| **Node Count** | ~15,000 | ~8,000 | ~1,800 |
+| **Accounting** | UTXO | Account | Account |
+| **Smart Contracts** | Limited | Full (EVM) | Full (Rust) |
+| **Network Model** | Gossip | Gossip | Turbine |
+| **State Size** | ~500 GB | ~1 TB | ~50 GB (with pruning) |
+| **Validator Cost** | $15B+ to attack | $40B+ to attack | Hardware intensive |
+
+---
+
+*This chapter provides technical context for investment decisions. It is educational content, not investment advice.*
