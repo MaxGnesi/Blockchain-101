@@ -130,10 +130,11 @@ Component 2 - Supply/Demand Adjustment:
 - Forces price convergence to spot
 
 Component 3 - Convexity Premium:
-- Coin-margined: HIGH premium (negative convexity for shorts)
-- USDT-margined: LOWER premium (linear exposure)
-- Compensates shorts for getting "more short" when losing
-- Higher for inverse perpetuals than linear
+- BOTH linear and inverse shorts bear negative convexity
+- Different types: Barrier risk (linear) vs Gamma risk (inverse)
+- Linear: Discrete tail risk at liquidation barrier
+- Inverse: Continuous exposure change throughout
+- Premium structure differs based on convexity type
 ```
 
 **Real Market Example:**
@@ -157,26 +158,28 @@ Component 2 - Supply/Demand:
 → Imbalance creates premium
 
 Component 3 - Convexity:
-→ Inverse perps typically have HIGHER funding
-→ Shorts bear negative convexity risk
-→ Linear perps have lower convexity premium
+→ BOTH linear and inverse have negative convexity for shorts
+→ Linear: Barrier/knock-out risk (discrete liquidation)
+→ Inverse: Gamma/straddle risk (continuous exposure change)
+→ Different risk profiles demand different premiums
 ```
 
 **Extreme Scenarios:**
 ```
 Bull Market / High Leverage:
 Funding can spike significantly (becomes very positive)
-Reason: Excessive long positioning + high convexity premium
+Reason: Excessive long positioning + high convexity premiums
+(Both barrier risk and gamma risk increase in volatile conditions)
 
 Bear Market / Low Leverage:
 Funding can flip negative (shorts pay longs)
-Reason: More shorts or balanced positioning + lower convexity premium
+Reason: More shorts or balanced positioning + lower convexity premiums
 
 Normal Conditions:
-Linear perps: Typically lower funding rates
-Inverse perps: Typically higher funding rates
-Reason: Perpetual access spread + structural long bias + convexity premium
-(Inverse has higher convexity premium component)
+Both linear and inverse perps typically have positive funding
+Premium reflects: Perpetual access + long bias + convexity risk
+Inverse may have higher funding due to continuous gamma convexity
+Linear premium reflects barrier/liquidation tail risk
 ```
 
 **Strategic Implications:**
@@ -201,20 +204,25 @@ Result: Can earn positive carry in typical market conditions
 
 ```
 Linear (USDT-margined) Short:
-+ Lower convexity risk
 + Simpler P&L calculation
-- Lower funding rates
++ Linear exposure (constant delta)
+- Barrier convexity (liquidation tail risk)
 - Need USDT, can't use native BTC
+- Must manage discrete liquidation risk
 
 Inverse (Coin-margined) Short:
-+ Higher funding rates (convexity premium!)
 + Can use native BTC as collateral
 + Collateral gains USD value if BTC rises (natural hedge)
-- Negative convexity (exposure grows when losing)
+- Gamma convexity (continuous exposure change)
 - More complex P&L
+- Must manage ongoing delta drift
 ```
 
-**Key Insight:** Positive funding reflects three economic components working together: (1) equilibrium spread for perpetual floating-rate access to leverage, (2) structural market bias toward long positions creating supply/demand imbalance, and (3) negative convexity premium that shorts bear (especially pronounced in coin-margined contracts). Understanding this three-part structure explains why inverse perpetuals typically have higher funding rates than linear perpetuals, and why being short perpetuals (while hedged with spot) can generate consistent yield in most market conditions.
+Both strategies collect funding, but manage different convexity risks:
+- Linear shorts manage tail/barrier risk
+- Inverse shorts manage continuous gamma bleed
+
+**Key Insight:** Positive funding reflects three economic components: (1) equilibrium spread for perpetual floating-rate access to leverage, (2) structural market bias toward long positions creating supply/demand imbalance, and (3) negative convexity premium that **all** shorts bear—though in different forms. Linear shorts face **barrier convexity** (discrete liquidation risk, like short knock-out options), while inverse shorts face **gamma convexity** (continuous exposure change, like short ATM straddles). Understanding these distinct convexity types explains why funding structures differ between linear and inverse perpetuals, and why being short perpetuals (while hedged with spot) can generate yield despite the convexity costs involved.
 
 **Think of it this way:**
 ```
@@ -247,11 +255,12 @@ Why is the spread positive (longs pay)?
    - Longs must compensate shorts for imbalance
    - Supply/demand pushes spread higher
 
-3. Negative Convexity (Coin-Margined):
-   - Shorts get "more short" when losing
-   - Shorts get "less short" when winning
-   - Asymmetric risk profile → demand premium
-   - Inverse perps trade at higher funding than linear
+3. Negative Convexity (Different Types):
+   - LINEAR shorts: Barrier/knock-out convexity (tail risk)
+   - INVERSE shorts: Gamma/straddle convexity (continuous)
+   - Both shorts face adverse convexity → demand premium
+   - Premium structure differs by convexity type
+   - Inverse may have higher funding due to continuous gamma bleed
 ```
 
 ### Linear vs Inverse Perpetuals
@@ -293,24 +302,42 @@ Inverse Long:
 Inverse Short:
 - Profits decelerate as price falls (your BTC profit worth less)
 - Losses accelerate as price rises (your BTC loss worth more)
-- NEGATIVE convexity (exposure GROWS when losing)
+- NEGATIVE GAMMA CONVEXITY (continuous exposure change)
+- Like being short an ATM straddle
 - EXTREME DANGER: Can lose infinite BTC as price rises
 ```
 
-**This Convexity Explains Funding Differences:**
+**Comparing Convexity Types:**
 ```
-Why inverse perps often have HIGHER funding:
+Linear (USDT-margined):
+- Short has BARRIER CONVEXITY
+- Risk concentrated at liquidation level
+- Like short knock-out option
+- Discrete catastrophic risk
 
-Shorts bear negative convexity risk
-→ Get "more short" when market goes against them
-→ Get "less short" when market works for them
-→ Asymmetric risk profile
-→ Demand higher compensation
-→ Higher funding rates than linear perps
+Inverse (Coin-margined):
+- Short has GAMMA CONVEXITY
+- Risk distributed continuously
+- Like short ATM straddle
+- Ongoing gamma bleed with every price move
 ```
 
-**Natural Hedge for Holders:**
-If you hold BTC and short inverse perps, your collateral (BTC) gains value as your short loses—providing natural hedging. However, you still face the negative convexity: your short exposure grows as price rises, partially offsetting the collateral gains.
+**This Convexity Difference May Explain Funding:**
+```
+Both shorts demand convexity premium, but:
+
+Linear shorts:
+→ Compensated for barrier/tail risk
+→ Binary liquidation event focus
+
+Inverse shorts:
+→ Compensated for continuous gamma bleed
+→ May require higher premium
+→ Every price move creates convexity cost
+```
+
+**Natural Hedge Consideration:**
+If you hold BTC and short inverse perps, your collateral (BTC) gains value as your short loses—providing natural hedging. However, you still face the negative gamma convexity: your short exposure grows as price rises, partially offsetting the collateral gains.
 
 ---
 
