@@ -1082,10 +1082,6 @@ Bet on tech that solves real constraints. Not on roadmaps and promises.
 
 ---
 
-**Next:** Chapter 4 will examine the regulatory landscape and compliance considerations affecting institutional adoption.
-
----
-
 ## Quick Reference: Key Metrics by Blockchain
 
 | Metric | Bitcoin | Ethereum | Solana |
