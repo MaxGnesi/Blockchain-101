@@ -1,4 +1,4 @@
-# Chapter 3: Following the Money - A Transaction's Journey
+# Chapter 2: Following the Money - A Transaction's Journey
 
 **Understanding blockchain investment requires understanding what actually happens when value moves.** Not the theory. The mechanics.
 
@@ -913,47 +913,24 @@ Logs are stored in transaction receipts but **not in blockchain state** (cheaper
 ## The Technology Stack: What You're Actually Betting On
 
 ```mermaid
-graph TB
-    subgraph Layer5["⚙️ Layer 5: Transaction Execution"]
-        E1[Virtual Machines<br/>EVM, Solana Runtime]
-        E2[Gas Metering<br/>Fee Markets]
-        E3[Smart Contracts<br/>DeFi, NFTs]
-    end
+graph LR
+    L1["🔒 Layer 1<br/><b>Cryptographic Primitives</b><br/>━━━━━━━━━━━━━━━<br/>• Hash Functions<br/>• Digital Signatures<br/>• Merkle Proofs"] 
     
-    subgraph Layer4["📊 Layer 4: State Management"]
-        S1[Account Model<br/>vs UTXO]
-        S2[Merkle Trees<br/>State Proofs]
-        S3[State Database<br/>Storage]
-    end
+    L2["🌐 Layer 2<br/><b>P2P Networking</b><br/>━━━━━━━━━━━━━━━<br/>• Gossip Protocol<br/>• Block Propagation<br/>• Mempool"]
     
-    subgraph Layer3["🤝 Layer 3: Consensus"]
-        C1[PoW vs PoS<br/>Security Model]
-        C2[Fork Choice<br/>Longest Chain]
-        C3[Finality Rules<br/>2-step, Fast]
-    end
+    L3["🤝 Layer 3<br/><b>Consensus</b><br/>━━━━━━━━━━━━━━━<br/>• PoW / PoS<br/>• Fork Choice<br/>• Finality"]
     
-    subgraph Layer2["🌐 Layer 2: P2P Networking"]
-        N1[Gossip / Turbine<br/>Propagation]
-        N2[Block Broadcast<br/>Optimization]
-        N3[Mempool<br/>Fee Market]
-    end
+    L4["📊 Layer 4<br/><b>State Management</b><br/>━━━━━━━━━━━━━━━<br/>• Account / UTXO<br/>• Merkle Trees<br/>• State Database"]
     
-    subgraph Layer1["🔒 Layer 1: Cryptographic Primitives"]
-        P1[Hash Functions<br/>SHA-256, Keccak]
-        P2[Digital Signatures<br/>ECDSA, Ed25519]
-        P3[Merkle Proofs<br/>Verification]
-    end
+    L5["⚙️ Layer 5<br/><b>Transaction Execution</b><br/>━━━━━━━━━━━━━━━<br/>• Virtual Machines<br/>• Gas Metering<br/>• Smart Contracts"]
     
-    Layer5 --> Layer4
-    Layer4 --> Layer3
-    Layer3 --> Layer2
-    Layer2 --> Layer1
+    L1 ==> L2 ==> L3 ==> L4 ==> L5
     
-    style Layer1 fill:#e1f5ff
-    style Layer2 fill:#f0e1ff
-    style Layer3 fill:#ffe1e1
-    style Layer4 fill:#fff4e1
-    style Layer5 fill:#e1ffe1
+    style L1 fill:#e1f5ff,stroke:#0066cc,stroke-width:2px
+    style L2 fill:#f0e1ff,stroke:#9933ff,stroke-width:2px
+    style L3 fill:#ffe1e1,stroke:#ff3333,stroke-width:2px
+    style L4 fill:#fff4e1,stroke:#ff9900,stroke-width:2px
+    style L5 fill:#e1ffe1,stroke:#00cc66,stroke-width:2px
 ```
 
 When you invest in a blockchain, you're betting on this entire stack:
@@ -1079,6 +1056,10 @@ When evaluating blockchain investments, ask:
 **The technology is the product.** In blockchain, there's no brand, no sales team, no marketing budget (usually). Just code, cryptography, and economic incentives.
 
 Bet on tech that solves real constraints. Not on roadmaps and promises.
+
+---
+
+**Next:** Chapter 4 will examine the regulatory landscape and compliance considerations affecting institutional adoption.
 
 ---
 
