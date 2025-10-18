@@ -1,4 +1,4 @@
-# Chapter 2: Following the Money - A Transaction's Journey
+# Chapter 3: Following the Money - A Transaction's Journey
 
 **Understanding blockchain investment requires understanding what actually happens when value moves.** Not the theory. The mechanics.
 
@@ -7,21 +7,20 @@ This chapter follows a single transaction from Alice sending 1 ETH to Bob—from
 ## Transaction Journey Overview
 
 ```mermaid
-graph TD
-    A[Alice's Wallet<br/>Create Transaction] -->|1. Sign with Private Key| B[Signed Transaction]
-    B -->|2. Broadcast| C[P2P Network<br/>Gossip/Turbine/Sequencer]
-    C -->|3. Validate & Forward| D[Mempool<br/>Fee Market]
-    D -->|4. Select Transactions| E[Validator/Miner<br/>Create Block]
-    E -->|5. Execute & Consensus| F[New Block<br/>PoW/PoS]
-    F -->|6. Propagate & Verify| G[Network Consensus<br/>Finality]
-    G -->|7. Update State| H[Alice: -1 ETH<br/>Bob: +1 ETH]
-    H -->|8. Confirmation| I[Transaction Receipt<br/>Complete]
+graph LR
+    A["📱 Alice's Wallet<br/>Create Tx"] -->|1. Sign| B["✍️ Signed<br/>Transaction"]
+    B -->|2. Broadcast| C["🌐 P2P Network<br/>Propagate"]
+    C -->|3. Queue| D["⏳ Mempool<br/>Fee Market"]
+    D -->|4. Select| E["⛏️ Validator<br/>Create Block"]
+    E -->|5. Consensus| F["✅ Block<br/>Confirmed"]
+    F -->|6. Update| G["💰 State<br/>Alice -1 ETH<br/>Bob +1 ETH"]
+    G -->|7. Receipt| H["📬 Complete"]
     
-    style A fill:#e1f5ff
-    style D fill:#fff4e1
-    style E fill:#ffe1e1
-    style G fill:#e1ffe1
-    style I fill:#f0e1ff
+    style A fill:#e1f5ff,stroke:#0066cc,stroke-width:2px
+    style D fill:#fff4e1,stroke:#ff9900,stroke-width:2px
+    style E fill:#ffe1e1,stroke:#ff3333,stroke-width:2px
+    style F fill:#e1ffe1,stroke:#00cc66,stroke-width:2px
+    style H fill:#f0e1ff,stroke:#9933ff,stroke-width:2px
 ```
 
 ---
@@ -360,28 +359,29 @@ Some argue MEV makes Ethereum more sustainable long-term (validators earn more =
 
 This is where blockchains differ significantly:
 
+**Proof of Work vs Proof of Stake:**
+
 ```mermaid
-graph TB
-    subgraph PoW["Proof of Work (Bitcoin)"]
-        M1[Miners Compete] --> M2[Try Trillions<br/>of Nonces]
-        M2 --> M3{Hash < Target?}
-        M3 -->|No| M2
-        M3 -->|Yes| M4[Broadcast Block]
-        M4 --> M5[Cost: $30k<br/>electricity/block]
-        M5 --> M6[Reward: 3.125 BTC<br/>+ fees]
+graph LR
+    subgraph PoW["⛏️ Proof of Work (Bitcoin)"]
+        direction LR
+        W1["Miners<br/>Compete"] --> W2["Find Nonce<br/>Trillions of<br/>attempts"]
+        W2 --> W3{"Hash <<br/>Target?"}
+        W3 -->|No| W2
+        W3 -->|Yes ✓| W4["Win Block<br/>$30k cost<br/>3.125 BTC reward"]
     end
     
-    subgraph PoS["Proof of Stake (Ethereum)"]
-        V1[Validators<br/>Stake 32 ETH] --> V2[Random<br/>Selection]
-        V2 --> V3[Propose Block]
-        V3 --> V4[Other Validators<br/>Attest]
-        V4 --> V5{Honest?}
-        V5 -->|Yes| V6[Earn ~3.5%<br/>APR]
-        V5 -->|No| V7[Slashing:<br/>Lose Stake]
+    subgraph PoS["🔒 Proof of Stake (Ethereum)"]
+        direction LR
+        S1["Stake<br/>32 ETH"] --> S2["Random<br/>Selection"]
+        S2 --> S3["Propose<br/>Block"]
+        S3 --> S4{"Honest?"}
+        S4 -->|Yes ✓| S5["Earn<br/>~3.5% APR"]
+        S4 -->|No ✗| S6["Slashed<br/>Lose Stake"]
     end
     
-    style PoW fill:#ffe1e1
-    style PoS fill:#e1ffe1
+    style PoW fill:#ffe1e1,stroke:#ff3333,stroke-width:2px
+    style PoS fill:#e1ffe1,stroke:#00cc66,stroke-width:2px
 ```
 
 #### **Proof of Work (Bitcoin, Litecoin)**
