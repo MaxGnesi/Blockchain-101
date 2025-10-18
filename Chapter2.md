@@ -1,4 +1,4 @@
-# Chapter 3: Following the Money - A Transaction's Journey
+# Chapter 2: Following the Money - A Transaction's Journey
 
 **Understanding blockchain investment requires understanding what actually happens when value moves.** Not the theory. The mechanics.
 
