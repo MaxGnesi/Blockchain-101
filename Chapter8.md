@@ -51,20 +51,35 @@ $100,000 position pays $10 every 8 hours
 
 You've correctly identified the two key components that explain why funding rates are usually positive (longs pay shorts):
 
-**1. The Cost of Capital Component (Implicit Lending Rate)**
+**1. The Perpetual Cost of Capital Component**
 ```
-Perpetual long ≈ Holding spot + Borrowed capital
+Perpetual long ≈ Holding spot + Borrowed capital FOREVER
 
 When you're long a perpetual:
-- You maintain leveraged exposure indefinitely
-- No need to roll contracts or post full capital
-- This convenience has a cost: the funding rate
+- You maintain leveraged exposure INDEFINITELY
+- No expiry = No rollover = No need to refinance
+- This infinite duration leverage has a cost
 
-Think of it as:
-Funding Rate ≈ Interest Rate on Borrowed Money
+Critical distinction:
+NOT short-term risk-free rate (overnight, 3M T-bill)
+BUT perpetual rate (infinite duration cost of capital)
 ```
 
-Holding a leveraged long position without expiry essentially means you're borrowing capital to maintain that exposure. In traditional markets, borrowing money costs interest. In perpetuals, this cost manifests as positive funding that longs pay to shorts.
+The key insight: Because perpetuals have **no expiry**, the appropriate cost of capital isn't a short-term rate. It's the cost of providing capital for an **infinite duration**—similar to perpetual bonds (UK Consols) or perpetual preferred equity.
+
+**Why This Matters:**
+```
+Traditional Futures:
+Expiry in 3 months → Use 3-month rate for pricing
+Roll to new contract → Pay new rate
+
+Perpetuals:
+No expiry EVER → Use perpetual rate for pricing
+No rolling → Same position forever
+Higher implicit rate → Reflects infinite duration risk
+```
+
+This explains why base funding rates (~10-15% annualized) are higher than overnight borrowing rates. You're not just borrowing for a day or a quarter—you're maintaining **infinite leverage** with zero rollover risk.
 
 **2. The Demand Asymmetry Component (Supply/Demand Factor)**
 ```
@@ -82,12 +97,14 @@ The crypto market generally exhibits more speculative long demand than natural s
 
 **The Complete Picture:**
 ```
-Funding Rate = Base Rate + Premium/Discount
+Funding Rate = Perpetual Base Rate + Premium/Discount
 
-Base Rate (typically positive):
-- Reflects cost of capital / time value of money
+Perpetual Base Rate (typically positive):
+- Cost of capital for INFINITE duration
+- NOT overnight rate or short-term T-bill
+- Reflects perpetual leverage with no rollover
 - Usually 0.01% per 8 hours (~10.95% annualized)
-- Acts as the "interest rate" for leverage
+- Higher than short-term rates due to infinite tenor
 
 Premium/Discount:
 - When perp > spot: Additional positive funding
@@ -103,9 +120,10 @@ BTC Market Conditions:
 - Funding: +0.01% (positive!)
 
 Why positive despite no price gap?
-→ Base rate reflects cost of infinite leverage
-→ Market demands compensation for providing shorts
-→ Even at parity, longs pay for the privilege
+→ Perpetual base rate reflects infinite duration leverage
+→ NOT just overnight borrowing cost
+→ Market compensates shorts for providing eternal liquidity
+→ Even at parity, longs pay for perpetual exposure privilege
 ```
 
 **Extreme Scenarios:**
@@ -139,7 +157,18 @@ Why it works:
 Result: Earn ~10-60% annualized on stablecoin risk
 ```
 
-**Key Insight:** Positive funding isn't arbitrary—it reflects both the economic cost of providing leverage indefinitely and the market's structural bullish bias. This makes being short perpetuals (while hedged) a yield-generating strategy in most market conditions.
+**Key Insight:** Positive funding isn't arbitrary—it reflects both the economic cost of providing **perpetual duration leverage** (not just overnight borrowing) and the market's structural bullish bias. This makes being short perpetuals (while hedged) a yield-generating strategy in most market conditions.
+
+**Think of it this way:**
+```
+Traditional Finance:
+30Y Treasury: ~4-5% (finite 30-year duration)
+Perpetual Bond: Should be higher (infinite duration)
+
+Crypto Perpetuals:
+Perpetual funding: ~10-15% annualized
+Reflects: Infinite leverage + Crypto risk + Long bias
+```
 
 ### Linear vs Inverse Perpetuals
 
