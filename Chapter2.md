@@ -1,4 +1,4 @@
-# Chapter 3: Regulatory Landscape - What Investors Need to Know
+# Chapter 4: Regulatory Landscape - What Investors Need to Know
 
 ## The Regulation Paradox
 
