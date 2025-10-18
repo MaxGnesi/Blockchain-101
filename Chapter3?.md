@@ -1,4 +1,4 @@
-# Chapter 2: The Crypto Ecosystem—Categories That Matter
+# Chapter 3: The Crypto Ecosystem—Categories That Matter
 
 Now that you understand Layer 1 blockchains, let's map the broader ecosystem. Not all crypto projects are the same—they serve different functions, have different risk profiles, and require different evaluation criteria.
 
