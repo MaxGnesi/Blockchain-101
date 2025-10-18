@@ -51,35 +51,50 @@ $100,000 position pays $10 every 8 hours
 
 You've correctly identified the two key components that explain why funding rates are usually positive (longs pay shorts):
 
-**1. The Perpetual Cost of Capital Component**
+**1. The Perpetual Floating-Rate Leverage Component**
 ```
-Perpetual long ≈ Holding spot + Borrowed capital FOREVER
+Perpetual long ≈ Infinite revolving credit line with floating spreads
 
 When you're long a perpetual:
 - You maintain leveraged exposure INDEFINITELY
-- No expiry = No rollover = No need to refinance
-- This infinite duration leverage has a cost
+- Rate adjusts every 8 hours (floating, not fixed)
+- No expiry = No rollover = Perpetual access to leverage
+- This perpetual access has a cost (the spread)
 
-Critical distinction:
-NOT short-term risk-free rate (overnight, 3M T-bill)
-BUT perpetual rate (infinite duration cost of capital)
+CRITICAL DISTINCTION:
+NOT like fixed-rate perpetual bond (infinite duration)
+BUT like floating-rate perpetual facility (minimal duration)
 ```
 
-The key insight: Because perpetuals have **no expiry**, the appropriate cost of capital isn't a short-term rate. It's the cost of providing capital for an **infinite duration**—similar to perpetual bonds (UK Consols) or perpetual preferred equity.
-
-**Why This Matters:**
+**Understanding the Floating vs Fixed Difference:**
 ```
+Fixed-Rate Perpetual (e.g., UK Consols):
+- Fixed coupon forever
+- Infinite duration → Extreme rate sensitivity
+- Price varies wildly with market rates
+
+Floating-Rate Perpetual (Perp Futures):
+- Rate resets every 8 hours
+- Near-zero duration → No rate sensitivity
+- Price stays anchored to spot via rate adjustments
+```
+
+**What You're Actually Paying For:**
+```
+The funding rate is the SPREAD for perpetual access:
+
 Traditional Futures:
-Expiry in 3 months → Use 3-month rate for pricing
-Roll to new contract → Pay new rate
+- Fixed expiry → Must roll contracts
+- Rolling costs → Contango/backwardation
+- Limited tenor → Refinancing risk
 
-Perpetuals:
-No expiry EVER → Use perpetual rate for pricing
-No rolling → Same position forever
-Higher implicit rate → Reflects infinite duration risk
+Perpetual Futures:
+- No expiry → Never roll
+- Floating rate → Adjusts to market
+- Infinite tenor → Pay spread for perpetual access
+
+Funding Rate = Equilibrium spread for this perpetual facility
 ```
-
-This explains why base funding rates (~10-15% annualized) are higher than overnight borrowing rates. You're not just borrowing for a day or a quarter—you're maintaining **infinite leverage** with zero rollover risk.
 
 **2. The Demand Asymmetry Component (Supply/Demand Factor)**
 ```
@@ -97,19 +112,20 @@ The crypto market generally exhibits more speculative long demand than natural s
 
 **The Complete Picture:**
 ```
-Funding Rate = Perpetual Base Rate + Premium/Discount
+Funding Rate = Equilibrium Spread + Supply/Demand Adjustment
 
-Perpetual Base Rate (typically positive):
-- Cost of capital for INFINITE duration
-- NOT overnight rate or short-term T-bill
-- Reflects perpetual leverage with no rollover
+Equilibrium Spread (typically positive):
+- Compensation for providing perpetual floating-rate leverage
+- NOT about duration risk (rate resets every 8 hours)
+- Reflects perpetual ACCESS to leverage, not fixed commitment
 - Usually 0.01% per 8 hours (~10.95% annualized)
-- Higher than short-term rates due to infinite tenor
+- Think: credit spread on a perpetual revolving facility
 
-Premium/Discount:
+Supply/Demand Adjustment:
 - When perp > spot: Additional positive funding
-- When perp < spot: Negative pressure (can flip negative)
-- Reflects immediate supply/demand imbalance
+- When perp < spot: Negative adjustment (can flip negative)
+- Reflects immediate market imbalance
+- Forces price convergence to spot
 ```
 
 **Real Market Example:**
@@ -120,10 +136,11 @@ BTC Market Conditions:
 - Funding: +0.01% (positive!)
 
 Why positive despite no price gap?
-→ Perpetual base rate reflects infinite duration leverage
-→ NOT just overnight borrowing cost
-→ Market compensates shorts for providing eternal liquidity
-→ Even at parity, longs pay for perpetual exposure privilege
+→ Equilibrium spread for perpetual floating-rate access
+→ NOT duration risk (rate resets every 8 hours)
+→ Compensation for shorts providing eternal liquidity
+→ Like a spread on an infinite credit line
+→ Even at parity, longs pay for perpetual access
 ```
 
 **Extreme Scenarios:**
@@ -157,17 +174,37 @@ Why it works:
 Result: Earn ~10-60% annualized on stablecoin risk
 ```
 
-**Key Insight:** Positive funding isn't arbitrary—it reflects both the economic cost of providing **perpetual duration leverage** (not just overnight borrowing) and the market's structural bullish bias. This makes being short perpetuals (while hedged) a yield-generating strategy in most market conditions.
+**Key Insight:** Positive funding isn't arbitrary—it reflects the equilibrium spread for **perpetual access to floating-rate leverage** (not duration risk) plus the market's structural bullish bias. This makes being short perpetuals (while hedged) a yield-generating strategy in most market conditions.
 
 **Think of it this way:**
 ```
 Traditional Finance:
-30Y Treasury: ~4-5% (finite 30-year duration)
-Perpetual Bond: Should be higher (infinite duration)
+Revolving Credit Facility: Pay LIBOR + Spread
+- Spread compensates lender for commitment
+- Rate floats, but commitment is perpetual
+- Duration is minimal (resets frequently)
 
-Crypto Perpetuals:
-Perpetual funding: ~10-15% annualized
-Reflects: Infinite leverage + Crypto risk + Long bias
+Perpetual Futures:
+Pay Funding Rate every 8 hours
+- "Spread" compensates shorts for commitment
+- Rate adjusts to market every 8 hours
+- Duration near-zero (floating rate)
+- "Perpetual" = infinite access, not infinite duration
+```
+
+**The Economics:**
+```
+Why is the spread positive (longs pay)?
+
+1. Perpetual Access Premium:
+   - Shorts commit to providing liquidity forever
+   - Longs get convenience of never rolling
+   - This asymmetry has value → positive spread
+
+2. Structural Long Bias:
+   - More demand for long leverage than short
+   - Longs must compensate shorts for imbalance
+   - Supply/demand pushes spread higher
 ```
 
 ### Linear vs Inverse Perpetuals
