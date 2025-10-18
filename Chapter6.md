@@ -11,27 +11,48 @@ Understanding crypto markets requires reading both blockchain data (on-chain) an
 
 **Active Addresses**
 - **What it measures:** Unique addresses sending/receiving transactions daily
-- **Calculation:** Count distinct addresses in 24h period
+- **Calculation example:** 
+  - Bitcoin on Jan 15, 2024: 950,000 active addresses
+  - During 2021 bull: 1.3M daily
+  - Bear market low: 800,000
+- **Where to find:**
+  - [Glassnode](https://studio.glassnode.com/): Metrics → Network Activity → Active Addresses
+  - [Blockchain.com](https://www.blockchain.com/explorer/charts/n-unique-addresses)
+  - [Santiment](https://app.santiment.net/): Search "daily_active_addresses"
 - **What it reveals:** Real usage vs speculation. Rising = adoption, falling = decreased activity
-- **Limitations:** One user can have multiple addresses; exchanges batch transactions
 
 **Transaction Count & Volume**
 - **What it measures:** Number and USD value of on-chain transactions
-- **Calculation:** Sum all transactions; multiply by token price for volume
+- **Calculation example:**
+  - Ethereum: 1.2M transactions/day × avg value $3,000 = $3.6B daily volume
+  - Subtract internal transactions (contract calls) for economic volume
+- **Where to find:**
+  - [Etherscan](https://etherscan.io/chart/tx): Daily transaction chart
+  - [BitInfoCharts](https://bitinfocharts.com/): Compare across chains
+  - [CryptoQuant](https://cryptoquant.com/asset/btc/chart/on-chain-indicator/transaction-count)
 - **What it reveals:** Economic activity, network demand
-- **Note:** Filter out change transactions and internal transfers for accuracy
 
 **Network Fees (Total & Average)**
 - **What it measures:** Total fees paid to miners/validators
-- **Calculation:** Sum of all transaction fees in period
-- **What it reveals:** Demand for blockspace, network congestion, economic security
-- **Key insight:** High fees = high demand but poor UX; low fees = accessible but may indicate low usage
+- **Calculation example:**
+  - Ethereum high congestion: 5,000 ETH daily fees × $2,500 = $12.5M/day
+  - Bitcoin average: 30-50 BTC daily fees
+- **Where to find:**
+  - [CryptoFees.info](https://cryptofees.info/): Daily fee revenue ranking
+  - [Etherscan Gas Tracker](https://etherscan.io/gastracker): Real-time gas prices
+  - [Glassnode](https://studio.glassnode.com/): Metrics → Fees → Total Fees
+- **What it reveals:** Demand for blockspace, network congestion
 
 **Hash Rate (PoW) / Staking Ratio (PoS)**
-- **What it measures:** Computational power (PoW) or percentage staked (PoS)
-- **Calculation:** PoW: Hashes per second; PoS: Staked tokens / total supply
+- **What it measures:** Computational power or percentage staked
+- **Calculation example:**
+  - Bitcoin: 500 EH/s (exahashes per second)
+  - Ethereum: 28M ETH staked / 120M supply = 23.3% staking ratio
+- **Where to find:**
+  - Bitcoin hash rate: [Blockchain.com](https://www.blockchain.com/explorer/charts/hash-rate)
+  - Ethereum staking: [Beaconcha.in](https://beaconcha.in/)
+  - [Glassnode](https://studio.glassnode.com/): Supply → Staking Ratio
 - **What it reveals:** Network security, miner/validator confidence
-- **Signal:** Rising hash rate despite price drops = long-term confidence
 
 ---
 
@@ -39,32 +60,52 @@ Understanding crypto markets requires reading both blockchain data (on-chain) an
 
 **Exchange Flows (Netflow)**
 - **What it measures:** Tokens moving to/from exchanges
-- **Calculation:** Exchange inflows - Exchange outflows
+- **Real example:**
+  - March 12, 2024: 30,000 BTC moved to exchanges
+  - Normal daily: 5,000-10,000 BTC
+  - Signal: 3x normal = potential selling
+- **Where to find:**
+  - [CryptoQuant](https://cryptoquant.com/asset/btc/chart/exchange-flows/exchange-netflow): Exchange Flows → Netflow
+  - [Glassnode](https://studio.glassnode.com/): Exchanges → All Exchanges Netflow
+  - Free alternative: [CoinGlass](https://www.coinglass.com/Balance) → Exchange Balance tab
 - **What it reveals:**
-  - Large inflows → Potential selling pressure
-  - Large outflows → Accumulation, cold storage
-- **Where to track:** [CryptoQuant](https://cryptoquant.com/), [Glassnode](https://glassnode.com/)
+  - Positive netflow (more in than out) → Selling pressure
+  - Negative netflow → Accumulation
 
 **HODL Waves / Coin Age Distribution**
 - **What it measures:** How long coins have been held without moving
-- **Calculation:** Group UTXOs/addresses by last movement time
-- **What it reveals:** 
-  - Old coins moving → Long-term holders selling
-  - Young coins dominant → High speculation
-- **Key bands:** 1d-1w (traders), 1m-3m (swing), 1y+ (holders)
+- **Real example:**
+  - 1+ year holders: 70% of BTC supply (strong hands)
+  - 1 day - 1 week: 5% (active traders)
+  - If 5-year old coins start moving → Major holder selling
+- **Where to find:**
+  - [HODL Waves Chart](https://unchained.com/hodlwaves/): Visual breakdown by age
+  - [Glassnode](https://studio.glassnode.com/): Supply → Coin Days Destroyed
+  - [LookIntoBitcoin](https://www.lookintobitcoin.com/charts/hodl-waves/): Free interactive chart
+- **What it reveals:** Old coins moving = long-term holders selling (often near tops)
 
 **Supply Distribution**
 - **What it measures:** Liquid vs illiquid vs highly liquid supply
-- **Calculation:** 
-  - Illiquid: Addresses with little selling history
-  - Liquid: Regular transaction activity
-- **What it reveals:** Available supply for trading vs locked in holding
+- **Calculation example:**
+  - Illiquid: 14.5M BTC (wallets that rarely sell)
+  - Liquid: 1.3M BTC (exchanges, active traders)
+  - Highly liquid: 3.2M BTC (market makers, exchanges)
+- **Where to find:**
+  - [Glassnode](https://studio.glassnode.com/): Supply → Liquid and Illiquid Supply
+  - [CryptoQuant](https://cryptoquant.com/): BTC Supply in Profit/Loss
+- **What it reveals:** Less liquid supply = less selling pressure
 
 **Whale Tracking**
-- **What it measures:** Large holder (>1000 BTC or >10000 ETH) activity
-- **Calculation:** Monitor addresses above threshold
-- **What it reveals:** Smart money movements, potential market moves
-- **Warning:** Single whale ≠ market direction
+- **What it measures:** Large holder activity
+- **Real examples:**
+  - Alert: Address moves 1,000 BTC to Coinbase
+  - Threshold: BTC >1000, ETH >10,000
+- **Where to find:**
+  - [WhaleAlert Twitter](https://twitter.com/whale_alert): Real-time large transactions
+  - [ClankApp](https://clankapp.com/): Whale wallet tracking
+  - [Nansen](https://www.nansen.ai/): Smart Money dashboard (paid)
+  - [Arkham](https://platform.arkhamintelligence.com/): Entity tracking
+- **What it reveals:** Smart money movements (but single whale ≠ market direction)
 
 ---
 
