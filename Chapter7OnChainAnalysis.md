@@ -249,6 +249,27 @@ Miners have ongoing costs and must sell:
 - Most sophisticated about timing
 - Always forced sellers to some degree
 
+### What Is Hash Rate?
+
+**Simple Definition:** Hash rate = Total computing power of all Bitcoin miners combined
+
+Think of it like a global competition where millions of computers are trying to solve puzzles to mine Bitcoin. Hash rate measures how many attempts per second the entire network makes. 
+
+```
+Higher hash rate = More miners/machines competing
+Lower hash rate = Fewer miners/machines competing
+
+Current Bitcoin hash rate: ~450 EH/s
+That's 450 quintillion calculations per second!
+```
+
+**Why It Matters:**
+- **Rising hash rate** = Miners investing in equipment (confident in Bitcoin's future)
+- **Falling hash rate** = Miners shutting down (unprofitable, capitulating)
+- **Security measure** = Higher hash rate makes network more secure
+
+Hash rate follows price with a lag - when Bitcoin price drops, unprofitable miners shut off machines, hash rate falls. When price rises, mining becomes profitable, more miners join, hash rate rises.
+
 ### Reading Miner Data Despite Constant Selling
 
 **Normal Baseline (The Noise):**
