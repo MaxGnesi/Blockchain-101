@@ -1,4 +1,4 @@
-# Chapter 9: Practical Tools & Resources
+# Chapter 11: Practical Tools & Resources
 ## Navigating the Blockchain Ecosystem
 
 After understanding blockchain technology, DeFi, and trading instruments, you need practical tools to interact with the ecosystem. This chapter covers essential tools, how to use them effectively, and critical safety practices.
