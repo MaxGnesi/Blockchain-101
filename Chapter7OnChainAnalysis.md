@@ -247,10 +247,43 @@ Miners have ongoing costs and must sell:
 - Electricity bills don't accept Bitcoin
 - Hardware financing needs fiat
 - Most sophisticated about timing
+- Always forced sellers to some degree
 
-### Hash Ribbons
+### Reading Miner Data Despite Constant Selling
 
-Tracks 30-day and 60-day mining hash rate:
+**Normal Baseline (The Noise):**
+```
+Typical Daily Operations:
+- Miners produce ~900 BTC/day (current, post-2024 halving)
+- Usually sell 50-70% immediately for operations
+- Hold 30-50% as treasury/speculation
+- This is normal - always happening
+```
+
+**What Actually Matters - CHANGES in Behavior:**
+```
+Accumulation Signal:
+- Selling <40% of production (building reserves)
+- Treasury balance increasing
+- Hash rate stable/growing
+= Miners bullish, can afford to hold
+
+Distribution Signal:
+- Selling 70-90% of production
+- Treasury balance flat/declining slowly
+= Miners cautious, selling to market
+
+Capitulation Signal:
+- Selling >100% of production (dipping into reserves)
+- Treasury balance declining rapidly  
+- Hash rate dropping (weakest miners offline)
+= Miners in distress, forced liquidation
+```
+
+### Key Miner Metrics
+
+**Hash Ribbons**
+Tracks 30-day and 60-day mining hash rate MAs:
 ```
 Capitulation Signal:
 - 30-day MA crosses below 60-day MA
@@ -260,22 +293,70 @@ Capitulation Signal:
 Recovery Signal:
 - 30-day crosses back above
 - Mining profitable again
-- New accumulation phase
+- New accumulation phase begins
 ```
 
-### Miner Net Position Change
+**Miner Position Index (MPI)**
+```
+Formula: (USD outflow from miners) ÷ (365-day MA)
 
+Reading the MPI:
+< 0 = Miners holding more than usual (bullish)
+0-2 = Normal operational selling
+> 2 = Excessive selling (bearish)
+> 3 = Capitulation (extreme, often marks bottom)
+```
+
+**Miner Net Position Change**
 Daily change in miner Bitcoin holdings:
-- Accumulation: Adding to reserves
-- Distribution: Selling more than mining
-- Capitulation: Emptying treasuries
-
 ```
-2022 Bear Market:
-- Miners sold 30,000 BTC in 6 months
+Rising treasury = Accumulation (very bullish)
+Flat treasury = Status quo operations
+Declining slowly = Marginal stress
+Declining rapidly = Capitulation
+
+Real Examples:
+2020-2021 Bull: Treasuries grew 50k → 80k BTC
+2022 Bear: Miners sold 30,000 BTC in 6 months
 - Treasuries hit multi-year lows
 - Marked the cycle bottom
 ```
+
+### Why Miner Capitulation Marks Bottoms
+
+1. **Maximum Pain Point**: Miners are most informed (know mining economics)
+2. **Forced Sellers Exhausted**: Once reserves gone, selling ends
+3. **Survival of Fittest**: Only efficient miners remain
+4. **Hash Recovery Signal**: Indicates profitability returning
+
+When hash ribbons flip negative AND miners empty treasuries, it's historically been the best buying opportunity.
+
+### Where to Get This Data
+
+**Free Sources:**
+- **LookIntoBitcoin.com**: Hash Ribbons chart
+- **Blockchain.com**: Raw hash rate data
+- **CryptoQuant Free**: Basic miner flows
+
+**Professional ($30-40/month):**
+- **Glassnode**: Complete miner suite with MPI
+- **CryptoQuant Advanced**: Real-time alerts
+- **ByteTree**: Miner's Rolling Inventory (MRI)
+
+### The Smart Interpretation
+
+**Don't Focus On:** Daily miner selling (too noisy)
+**Do Focus On:** Monthly trend changes in:
+- Percentage of production sold
+- Treasury balance direction
+- Hash rate trends
+
+**Key Questions:**
+- Are miners selling MORE or LESS than their usual 50-70%?
+- Is their treasury GROWING or SHRINKING?
+- Is hash rate RISING or FALLING?
+
+The answers reveal if miners (despite being forced sellers) are optimistic or pessimistic. When the most informed forced sellers capitulate, it's often the absolute bottom.
 
 ---
 
