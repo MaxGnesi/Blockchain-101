@@ -1,4 +1,4 @@
-# Chapter 7: The DeFi Landscape
+# Chapter 9: The DeFi Landscape
 ## Understanding Decentralized Finance Mechanisms
 
 Previous chapters covered what DeFi protocols are. This chapter explains how DeFi actually works—the mechanisms for earning yield, providing liquidity, and the risks involved. Understanding these mechanics is essential before participating.
