@@ -1,4 +1,4 @@
-# Chapter 8: Trading Instruments
+# Chapter 10: Trading Instruments
 ## Perpetuals, Options & Collateral Mechanics
 
 While DeFi offers decentralized trading, centralized exchanges (CEXs) dominate derivatives trading with perpetuals and options. Understanding these instruments—and critically, collateral mechanics—is essential for navigating crypto markets.
