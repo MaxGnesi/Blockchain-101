@@ -1,4 +1,4 @@
-# Appendix II: The Solana Ecosystem
+# Appendix III: The Solana Ecosystem
 
 ## Introduction
 
