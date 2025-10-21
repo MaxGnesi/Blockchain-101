@@ -250,7 +250,7 @@ For those exploring Ethereum DeFi:
 1. **Set up a Wallet**: MetaMask remains most popular; alternatives include Rainbow, Rabby, Frame
 2. **Acquire ETH**: Purchase from exchanges and transfer to your wallet. Always keep ETH for gas fees
 3. **Start with Liquid Staking**: Lido (stETH) offers the simplest entry to earning yields
-4. **Protect Against MEV**: Configure Flashbots Protect RPC in MetaMask (see Appendix III) to shield trades from sandwich attacks
+4. **Protect Against MEV**: Configure Flashbots Protect RPC in MetaMask (see Appendix IV) to shield trades from sandwich attacks
 5. **Understand Risks**: Smart contracts can have bugs, protocols can be exploited, markets are volatile. Only risk what you can afford to lose
 6. **Explore Layer 2s**: Try Arbitrum or Base for lower-cost experimentation
 7. **Research Thoroughly**: Check protocol audits on platforms like Immunefi, read docs, understand the risks specific to each protocol
