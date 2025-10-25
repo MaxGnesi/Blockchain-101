@@ -247,8 +247,9 @@ Enable cross-chain asset transfers.
 #### **Meme Coins**
 
 - **Dogecoin (DOGE)**, **Shiba Inu (SHIB)**, **Pepe (PEPE)**
-- Pure speculation, no fundamentals
-- **For serious portfolios: avoid**
+- Pure speculation driven by community and social sentiment
+- No underlying fundamentals or utility (by design)
+- **Investment consideration**: Highly volatile speculation plays; institutional adoption remains difficult due to lack of business model and governance structure
 
 #### **Legacy "Ethereum Killers"**
 
