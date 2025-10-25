@@ -1,4 +1,4 @@
-# Chapter 2: Following the Money
+# Under the Hood: How Blockchain Actually Works
 ## A Transaction's Journey Through the Blockchain
 
 Chapter 1 established what blockchain promises and the investment landscape built on it. Now we'll look under the hood. By following one transaction from start to finish, we'll understand the actual mechanics that create both the opportunities and constraints in this technology.
