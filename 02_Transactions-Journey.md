@@ -11,6 +11,15 @@ This chapter follows a single transaction—Alice sending 1 ETH to Bob—from th
 
 ## Transaction Journey Overview
 
+**A note on terminology:** In blockchain, "transaction" means any state change—not just payments. It could be:
+- Sending ETH (what we'll follow)
+- Swapping tokens on Uniswap
+- Minting an NFT
+- Voting in a DAO
+- Updating a smart contract
+
+We'll trace a simple ETH transfer because it reveals the entire infrastructure. Every operation—from DeFi swaps to NFT mints—follows this same 8-step journey. Master the basics, understand everything.
+
 **The 8 Steps from Wallet to Blockchain:**
 
 1. **📱 Create** → Transaction formed in wallet
