@@ -155,8 +155,8 @@ Not all crypto is the same. Different categories require different analysis, hav
 **Investment thesis:** Bet on the platform that captures developer mindshare and user activity. Network effects are everything.
 
 **Major players:**
-- **Bitcoin (BTC)**: Digital gold narrative, $500B-1T market cap
-- **Ethereum (ETH)**: Smart contract platform, DeFi hub, $200-400B
+- **Bitcoin (BTC)**: Digital gold narrative, ~$1.2T market cap (as of October 2025)
+- **Ethereum (ETH)**: Smart contract platform, DeFi hub, ~$450B market cap (as of October 2025)
 - **Solana (SOL)**: High-speed alternative, meme coin capital
 - **Cardano (ADA)**, **Avalanche (AVAX)**: Ethereum alternatives
 
@@ -273,7 +273,7 @@ Security emerges from multiple reinforcing layers:
 The beautiful part: **honest behavior is more profitable than attacking**.
 
 - **Bitcoin**: Attacking requires more hardware than exists globally plus massive electricity costs
-- **Ethereum**: Attacking requires buying $40B+ of ETH, which then becomes worthless
+- **Ethereum**: Attacking requires buying $40B+ of ETH (as of October 2025), which then becomes worthless
 - **Game theory enforcement**: The network makes dishonesty economically irrational
 
 #### **2. Cryptographic Security**
@@ -381,7 +381,7 @@ When evaluating blockchain investments, focus on:
 - **Reality**: Faster and cheaper than SWIFT for specific corridors
 
 #### **Decentralized Finance**
-- **$50B+ locked** in lending, trading, yield generation
+- **~$120B locked** in lending, trading, yield generation (as of October 2025)
 - **Reality**: Works but mostly for sophisticated users
 
 #### **Capital Controls Circumvention**
@@ -448,3 +448,4 @@ The technology is revolutionary. The opportunity is generational. Success requir
 ---
 
 *This chapter provides educational context for investment decisions. It is not financial advice. Always do your own research and consult with qualified advisors.*
+
