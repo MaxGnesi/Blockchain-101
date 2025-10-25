@@ -203,14 +203,16 @@ Enable token swaps without centralized intermediaries.
 
 #### **Stablecoins**
 
-Bridge between crypto volatility and stable value.
+The infrastructure layer for crypto trading and DeFi.
 
 **Types:**
-- **Fiat-backed**: USDC (Circle), USDT (Tether)
+- **Fiat-backed**: USDC (Circle), USDT (Tether) - dominant
 - **Crypto-backed**: DAI (MakerDAO)
 - **Algorithmic**: Mostly failed (Terra/UST collapse)
 
-**Investment angle:** Stablecoins themselves don't appreciate. Value is in issuers (Circle IPO potential) or governance tokens (MKR).
+**Primary function:** Trading pairs, collateral, liquidity provision—not appreciation assets.
+
+**Investment angle:** Value is in issuers (Circle IPO potential, Tether revenue) or governance tokens (MKR). Stablecoins themselves don't appreciate but enable the entire trading ecosystem.
 
 #### **Liquid Staking**
 
@@ -377,9 +379,13 @@ When evaluating blockchain investments, focus on:
 - **Bitcoin**: Survived 15+ years, growing institutional adoption
 - **Reality**: Works if you can stomach volatility
 
-#### **International Payments**
-- **Stablecoins**: USDC/USDT genuinely useful for cross-border transfers
-- **Reality**: Faster and cheaper than SWIFT for specific corridors
+#### **Trading & DeFi Infrastructure**
+- **Stablecoins**: USDC/USDT backbone of crypto trading (~$160B supply, as of October 2025)
+- **Reality**: Primary use is trading pairs, collateral, and liquidity provision; cross-border payments secondary but growing
+
+#### **International Payments (Emerging)**
+- **Stablecoins**: Also used for cross-border transfers in specific corridors
+- **Reality**: Faster than SWIFT but smaller use case than trading infrastructure
 
 #### **Decentralized Finance**
 - **~$120B locked** in lending, trading, yield generation (as of October 2025)
