@@ -1,4 +1,4 @@
-# Appendix: Cryptocurrency Monetary Policy and Tokenomics
+# Appendix V: Cryptocurrency Monetary Policy and Tokenomics
 
 ## Executive Summary
 
