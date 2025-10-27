@@ -427,16 +427,16 @@ Total Insider:     ~48%
 
 ### Summary Table: Governance Risk Assessment
 
-| Asset | Insider Control | Conflict Level | Governance Risk | Institutional Suitability |
-|-------|----------------|----------------|-----------------|-------------------------|
-| **Bitcoin** | ~0% (Satoshi dormant) | None | Minimal | ✅ Core Allocation |
-| **Ethereum** | <2% | Low | Low | ✅ Core Allocation |
-| **Solana** | ~30-40% | High | High | ⚠️ Satellite Only |
-| **Cardano** | ~15-20% | Moderate | Moderate | ⚠️ Satellite Position |
-| **Avalanche** | ~30%+ | High | High | ⚠️ Monitor Vesting |
-| **Polygon** | ~20-25% | Moderate-High | Moderate | ⚠️ Small Position |
-| **XRP** | ~48% | Extreme | Extreme | ❌ Avoid |
-| **BNB** | Binance controlled | Extreme | Extreme | ❌ Avoid |
+| Asset | Insider Control | Concentration Level | Governance Structure | Key Characteristics |
+|-------|----------------|-------------------|---------------------|-------------------|
+| **Bitcoin** | ~0% (Satoshi dormant) | None | Fully Decentralized | Maximum predictability, no active founder |
+| **Ethereum** | <2% | Low | Decentralized Governance | EIP process, broad consensus required |
+| **Solana** | ~30-40% | High | Foundation Influenced | Vesting schedules, foundation influence |
+| **Cardano** | ~15-20% | Moderate | Multi-entity | Development company, foundation, community |
+| **Avalanche** | ~30%+ | High | Foundation Led | Regular unlock events, ecosystem incentives |
+| **Polygon** | ~20-25% | Moderate-High | Mixed | Multiple stakeholder groups |
+| **XRP** | ~48% | High | Corporate | Ripple Labs controlled supply |
+| **BNB** | Exchange controlled | High | Corporate | Binance exchange dependency |
 
 ---
 
